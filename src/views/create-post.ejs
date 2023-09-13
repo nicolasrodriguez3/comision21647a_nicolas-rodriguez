@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Agregar publicación</title>
+		<link
+			rel="stylesheet"
+			href="/styles/style.css" />
+	</head>
+	<body>
+		<form
+			action="/add-post"
+			method="POST"
+			class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+			<div class="mb-4">
+				<label
+					class="block text-gray-700 text-sm font-bold mb-2"
+					for="title">
+					Título del post
+				</label>
+				<input
+					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					id="title"
+					type="text"
+					placeholder="Mi publicación"
+					required />
+			</div>
+			<div class="mb-4">
+				<label
+					class="block text-gray-700 text-sm font-bold mb-2"
+					for="content">
+					Contenido del post
+				</label>
+				<textarea
+					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					id="content"
+					placeholder="Esta publicación trata de..."
+					required></textarea>
+			</div>
+			<div class="mb-4">
+				<label
+					class="block text-gray-700 text-sm font-bold mb-2"
+					for="image_url">
+					Link para visualizar una imagen del posteo (URL de la imagen)
+				</label>
+				<input
+					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					id="image_url"
+					type="text"
+					placeholder="www.imagendeejemplo.com/imagen.png" />
+			</div>
+			<div class="flex items-center justify-start gap-4">
+				<button
+					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+					type="submit">
+					Crear post
+				</button>
+				<a
+					href="/"
+					class="hover:underline"
+					>Volver</a
+				>
+			</div>
+		</form>
+	</body>
+</html>
