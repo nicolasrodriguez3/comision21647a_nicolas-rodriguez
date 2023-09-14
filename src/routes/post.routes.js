@@ -3,6 +3,6 @@ const { postController } = require("../controllers/post.controller")
 
 postRoutes.get("/", postController.home)
 
-postRoutes.get("/add", postController.home)
+postRoutes.get("/new-post", postController.add)
 
 module.exports = postRoutes
