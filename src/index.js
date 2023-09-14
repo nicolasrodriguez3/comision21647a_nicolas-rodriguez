@@ -1,5 +1,6 @@
 require("dotenv").config()
 const express = require("express")
+const morgan = require("morgan")
 const path = require("path")
 const app = express()
 
@@ -14,9 +15,10 @@ app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 app.use(express.static("public"))
 
-// Configurar middleware para procesar datos json
+// Middlewares
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+app.use(morgan("dev"))
 
 app.use(postRoutes)
 
