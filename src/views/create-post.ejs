@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0" />
-		<title>Agregar publicación</title>
-		<link
-			rel="stylesheet"
-			href="/styles/style.css" />
-	</head>
-	<body>
+<%- include("partials/head", {title: "Agregar publicación"}) %>
+
+<body>
+	<%- include("./partials/navbar") %>
+	<main class="container mx-auto grow py-4">
 		<form
 			action="/add-post"
 			method="POST"
@@ -65,5 +57,5 @@
 				>
 			</div>
 		</form>
-	</body>
-</html>
+	</main>
+</body>
