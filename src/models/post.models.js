@@ -11,17 +11,14 @@ const Post = sequelize.define("Post", {
 		type: DataTypes.TEXT,
 		allowNull: false,
 	},
-	image_url: {
+	imageUrl: {
 		type: DataTypes.STRING,
-	},
-	created_at: {
-		type: DataTypes.DATE,
-		allowNull: false,
-		defaultValue: Sequelize.fn("NOW"),
 	},
 })
 
 // `sequelize.define` also returns the model
 console.log(Post === sequelize.models.Post) // true
+
+Post.sync()
 
 module.exports = Post
