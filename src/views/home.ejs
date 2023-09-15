@@ -3,7 +3,7 @@
 <body class="flex flex-col min-h-screen">
 	<%- include("./partials/navbar") %>
 
-	<main class="container mx-auto grow py-4">
+	<main class="container mx-auto grow p-4">
 		<header>
 			<h1 class="text-3xl">Bienvenido al Foro</h1>
 			<p>¡Únete a la conversación!</p>
@@ -17,15 +17,9 @@
 		</header>
 		<!-- Publicaciones del foro aquí -->
 		<% if (posts && posts.length > 0) { %>
-		<ul>
-			<% posts.forEach(function(post) { %>
-			<li>
-				<h2><a href="/post/<%= post.id %>"><%= post.title %></a></h2>
-				<p><%= post.content %></p>
-				<p>Img: <%= post.imageUrl %></p>
-			</li>
-			<% }); %>
-		</ul>
+		<section class="flex flex-col gap-6 py-4">
+			<% posts.forEach(function(post) { %> <%- include("./partials/post", {post}) %> <% }) %>
+		</section>
 		<% } else { %>
 		<p class="text-red-500">No hay publicaciones disponibles.</p>
 		<% } %>
