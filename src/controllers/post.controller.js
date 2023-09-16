@@ -7,6 +7,14 @@ const postController = {
 		res.render("home", { posts: posts })
 	},
 
+	postView: async (req, res) => {
+		const { id } = req.params
+		const post = await Post.findOne({ where: { id } })
+		if (!post) return res.status(400).render("error", { message: "No se encontró el post" })
+
+		res.render("post-view", { post })
+	},
+
 	// controlador para crear un post
 	addPost: async (req, res) => {
 		const { title, content, imageUrl } = req.body
@@ -21,8 +29,8 @@ const postController = {
 	},
 
 	// vista para crear posts
-	add: (req, res) => {
-		res.render("create-post")
+	formPosts: (req, res) => {
+		res.render("create-post", { postToEdit: null })
 	},
 
 	// controlador para eliminar un post
@@ -41,19 +49,37 @@ const postController = {
 	},
 
 	// controlador para editar un post
-	editPost: async (req, res) => {
+	// obtener el post a editar
+	getPost: async (req, res) => {
 		const { id } = req.params
-		const { title, content, imageUrl } = req.body
 
 		// buscar el post a editar
 		const postToEdit = await Post.findOne({ where: { id } })
-		if (!postToEdit) return res.status(400).send("No se encontró el post")
+		if (!postToEdit) return res.status(400).render("error", { message: "No se encontró el post" })
+		res.render("create-post", { postToEdit })
+	},
+
+	// enviar el post editado a la BD
+	editPost: async (req, res) => {
+		const { id, title, content, imageUrl } = req.body
 
 		try {
-			const postEdited = await Post.update({ title, content, imageUrl }, { where: { id } })
-			res.send(postEdited)
+			await Post.update({ title, content, imageUrl }, { where: { id } })
+			res.redirect("/")
 		} catch (error) {
 			res.status(400).send("Error al actualizar el post.")
+		}
+	},
+
+	// Eliminar post
+	deletePost: async (req, res) => {
+		const { id } = req.body
+
+		try {
+			await Post.destroy({ where: { id } })
+			res.redirect("/")
+		} catch (error) {
+			res.status(400).send("Error al eliminar el post.")
 		}
 	},
 }

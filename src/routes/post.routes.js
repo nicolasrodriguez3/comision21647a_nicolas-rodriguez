@@ -4,16 +4,19 @@ const { postController } = require("../controllers/post.controller")
 // Rutas para el CRUD
 // Leer posts
 postRoutes.get("/", postController.home)
+postRoutes.get("/post/:id", postController.postView)
 
-postRoutes.get("/new-post", postController.add)
+// formulario de creación de posts
+postRoutes.get("/post", postController.formPosts)
 
 // Crear nuevo post
-postRoutes.post("/add-post", postController.addPost)
+postRoutes.post("/newPost", postController.addPost)
 
 // Eliminar un post
-postRoutes.delete("/post/:id", postController.deletePost)
+postRoutes.post("/deletePost", postController.deletePost)
 
 // Editar un post
-postRoutes.put("/post/:id", postController.editPost)
+postRoutes.get("/editPost/:id", postController.getPost)
+postRoutes.post("/editPost", postController.editPost)
 
 module.exports = postRoutes
