@@ -1,5 +1,7 @@
-const postRoutes = require("express").Router()
-const { postController } = require("../controllers/post.controller")
+import { Router } from "express"
+import { postController } from "../controllers/post.controller.js"
+
+export const postRoutes = Router()
 
 // Rutas para el CRUD
 // Leer posts
@@ -15,5 +17,3 @@ postRoutes.delete("/post/:id", postController.deletePost)
 
 // Editar un post
 postRoutes.put("/post/:id", postController.editPost)
-
-module.exports = postRoutes

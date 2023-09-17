@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require("sequelize")
-const { sequelize } = require("../database/db")
+import { Sequelize, DataTypes } from "sequelize"
+import { sequelize } from "../database/db.js"
 
-const Post = sequelize.define("Post", {
+export const Post = sequelize.define("Post", {
 	// Model attributes
 	title: {
 		type: DataTypes.STRING,
@@ -20,5 +20,3 @@ const Post = sequelize.define("Post", {
 console.log(Post === sequelize.models.Post) // true
 
 Post.sync()
-
-module.exports = Post

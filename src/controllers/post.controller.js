@@ -1,6 +1,7 @@
-const Post = require("../models/post.models")
+import { Post } from "../models/post.models.js"
+// const Post = require("../models/post.models").default
 
-const postController = {
+export const postController = {
 	// controlador para obtener todos los posts
 	home: async (req, res) => {
 		const posts = await Post.findAll()
@@ -57,5 +58,3 @@ const postController = {
 		}
 	},
 }
-
-module.exports = { postController }
