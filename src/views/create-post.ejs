@@ -2,25 +2,35 @@
 
 <body>
 	<%- include("./partials/navbar") %>
+
 	<main class="container mx-auto grow py-4">
+		<% if (postToEdit) { %> Editar publicación <% } else { %> Nueva publicación <% } %>
+
 		<form
-			action="/add-post"
+			action="<%= postToEdit ? "/editPost" : "/newPost" %>"
 			method="POST"
 			class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+			<!-- Post ID (Only to edit) -->
+			<% if (postToEdit) { %> 
+				<input name="id" type="hidden"
+				value="<%= postToEdit?.id %>"
+				 />
+			<% } %>
+
+			<!-- POST TITLE -->
 			<div class="mb-4">
 				<label
 					class="block text-gray-700 text-sm font-bold mb-2"
 					for="title">
 					Título del post
 				</label>
-				<input
-					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-					id="title"
-					name="title"
-					type="text"
-					placeholder="Mi publicación"
-					required />
+				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+				leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text"
+				placeholder="Mi publicación" value="<%= postToEdit?.title ? postToEdit.title : "" %>"
+				required />
 			</div>
+
+			<!-- POST CONTENT -->
 			<div class="mb-4">
 				<label
 					class="block text-gray-700 text-sm font-bold mb-2"
@@ -32,26 +42,28 @@
 					id="content"
 					name="content"
 					placeholder="Esta publicación trata de..."
-					required></textarea>
+					required>
+<%= postToEdit?.content ? postToEdit.content.trim() : "" %></textarea
+				>
 			</div>
+
+			<!-- POST IMAGE -->
 			<div class="mb-4">
 				<label
 					class="block text-gray-700 text-sm font-bold mb-2"
 					for="image_url">
-					Link para visualizar una imagen del posteo (URL de la imagen)
+					Link para visualizar una imagen del post (URL de la imagen)
 				</label>
-				<input
-					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-					id="image_url"
-					type="text"
-					name="imageUrl"
-					placeholder="www.imagendeejemplo.com/imagen.png" />
+				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+				leading-tight focus:outline-none focus:shadow-outline" id="image_url" type="text"
+				name="imageUrl" value="<%= postToEdit?.imageUrl ? postToEdit.imageUrl : "" %>"
+				placeholder="www.imagendeejemplo.com/imagen.png" />
 			</div>
 			<div class="flex items-center justify-start gap-4">
 				<button
 					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 					type="submit">
-					Crear post
+					<%= postToEdit ? "Editar post" : "Crear post" %>
 				</button>
 				<a
 					href="/"

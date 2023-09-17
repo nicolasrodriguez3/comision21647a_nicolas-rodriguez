@@ -7,22 +7,21 @@
 		<header>
 			<h1 class="text-3xl">Bienvenido al Foro</h1>
 			<p>¡Únete a la conversación!</p>
-			<p>
+			<p class="mt-4">
 				<a
-					href="/new-post"
+					href="/post"
 					class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 					>Crear publicación</a
 				>
 			</p>
 		</header>
 		<!-- Publicaciones del foro aquí -->
-		<% if (posts && posts.length > 0) { %>
 		<section class="flex flex-col gap-6 py-4">
-			<% posts.forEach(function(post) { %> <%- include("./partials/post", {post}) %> <% }) %>
+			<% if (posts && posts.length > 0) { %> <% posts.forEach(function(post) { %> <%-
+			include("./partials/post", {post}) %> <% }) %> <% } else { %>
+			<p class="text-red-500">No hay publicaciones disponibles.</p>
+			<% } %>
 		</section>
-		<% } else { %>
-		<p class="text-red-500">No hay publicaciones disponibles.</p>
-		<% } %>
 	</main>
 
 	<%- include("partials/footer") %>
