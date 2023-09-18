@@ -1,15 +1,17 @@
 <%- include("partials/head", {title: "Agregar publicación"}) %>
 
-<body>
+<body class="flex flex-col min-h-screen bg-white dark:bg-gray-800">
 	<%- include("./partials/navbar") %>
 
-	<main class="container mx-auto grow py-4">
+	<main class="container mx-auto grow py-4 max-w-3xl">
+		<h2 class="text-2xl dark:text-gray-50 text-slate-950 mb-3">
 		<% if (postToEdit) { %> Editar publicación <% } else { %> Nueva publicación <% } %>
-
+</h2>
 		<form
 			action="<%= postToEdit ? "/editPost" : "/newPost" %>"
 			method="POST"
-			class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+			class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4  border border-gray-200 mx-auto dark:border-gray-600 dark:bg-gray-700">
+
 			<!-- Post ID (Only to edit) -->
 			<% if (postToEdit) { %> 
 				<input name="id" type="hidden"
@@ -20,11 +22,11 @@
 			<!-- POST TITLE -->
 			<div class="mb-4">
 				<label
-					class="block text-gray-700 text-sm font-bold mb-2"
+					class="block dark:text-gray-50 text-slate-950 text-sm font-bold mb-2"
 					for="title">
 					Título del post
 				</label>
-				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+				<input class="shadow appearance-none border rounded w-full py-2 px-3 
 				leading-tight focus:outline-none focus:shadow-outline" id="title" name="title" type="text"
 				placeholder="Mi publicación" value="<%= postToEdit?.title ? postToEdit.title : "" %>"
 				required />
@@ -33,12 +35,12 @@
 			<!-- POST CONTENT -->
 			<div class="mb-4">
 				<label
-					class="block text-gray-700 text-sm font-bold mb-2"
+					class="block dark:text-gray-50 text-slate-950 text-sm font-bold mb-2"
 					for="content">
 					Contenido del post
 				</label>
 				<textarea
-					class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+					class="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
 					id="content"
 					name="content"
 					placeholder="Esta publicación trata de..."
@@ -50,11 +52,11 @@
 			<!-- POST IMAGE -->
 			<div class="mb-4">
 				<label
-					class="block text-gray-700 text-sm font-bold mb-2"
+					class="block dark:text-gray-50 text-slate-950 text-sm font-bold mb-2"
 					for="image_url">
 					Link para visualizar una imagen del post (URL de la imagen)
 				</label>
-				<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+				<input class="shadow appearance-none border rounded w-full py-2 px-3 
 				leading-tight focus:outline-none focus:shadow-outline" id="image_url" type="text"
 				name="imageUrl" value="<%= postToEdit?.imageUrl ? postToEdit.imageUrl : "" %>"
 				placeholder="www.imagendeejemplo.com/imagen.png" />
@@ -67,10 +69,12 @@
 				</button>
 				<a
 					href="/"
-					class="hover:underline"
+					class="hover:underline dark:text-gray-50 text-slate-950"
 					>Volver</a
 				>
 			</div>
 		</form>
 	</main>
+
+	<%- include("partials/footer", {className: "grow"}) %>
 </body>

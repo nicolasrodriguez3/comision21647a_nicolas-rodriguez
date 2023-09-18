@@ -1,10 +1,11 @@
+import { sequelize } from "../database/db.js"
 import { Post } from "../models/post.models.js"
 // const Post = require("../models/post.models").default
 
 export const postController = {
 	// controlador para obtener todos los posts
 	home: async (req, res) => {
-		const posts = await Post.findAll()
+		const posts = await Post.findAll({order: [[sequelize.col('createdAt'), 'DESC']]})
 		res.render("home", { posts: posts })
 	},
 
@@ -18,7 +19,11 @@ export const postController = {
 
 	// controlador para crear un post
 	addPost: async (req, res) => {
-		const { title, content, imageUrl } = req.body
+		let { title, content, imageUrl } = req.body
+
+		title.trim()
+		content.trim()
+		imageUrl.trim()
 
 		try {
 			const post = await Post.create({ title, content, imageUrl })
