@@ -1,8 +1,8 @@
 # Foro Personal - Proyecto final Argentina Programa
 
-Este proyecto es una aplicación de foro personal que permite al usuarios crear publicaciones sobre diversos temas. Cada publicación incluye un título descriptivo, contenido informativo, una fecha de creación y la opción de adjuntar un enlace (URL) de una imagen de Internet relacionada con el contenido.
+Este proyecto es una aplicación de foro personal que permite al usuario crear publicaciones sobre diversos temas. Cada publicación incluye un título descriptivo, contenido informativo, una fecha de creación y la opción de adjuntar un enlace (URL) de una imagen de Internet relacionada con el contenido.
 
-La aplicación se ha desarrollado utilizando Node.js, Express, EJS y Tailwind CSS para estilos.
+La aplicación se ha desarrollado utilizando Node.js, Express, EJS, MYSQL y Tailwind CSS para estilos.
 
 ## Características
 
@@ -33,7 +33,7 @@ Siga estos pasos para ejecutar el proyecto en su máquina local:
    ```
 
 4. Configura variables de entorno:
-   Crea un archivo .env en la raíz del proyecto con la siguiente configuración:
+   Crea un archivo ".env" en la raíz del proyecto con la siguiente configuración:
 
    ```env
    PORT=1234
@@ -58,9 +58,9 @@ Siga estos pasos para ejecutar el proyecto en su máquina local:
 Este proyecto utiliza las siguientes tecnologías web:
 
 - Node.js: Entorno de tiempo de ejecución JavaScript del lado del servidor.
-- Express.js: Marco de aplicación web de Node.js.
+- Express.js: Framework de aplicación web de Node.js.
 - EJS (Embedded JavaScript): Motor de plantillas para generar contenido HTML dinámico.
-- Tailwind CSS: Marco CSS de utilidad para estilizar la interfaz de usuario de manera eficiente.
+- Tailwind CSS: Framework CSS para estilizar la interfaz de usuario de manera eficiente.
 - MySQL: Sistema de gestión de bases de datos relacional.
 - Sequelize: ORM (Mapeo Objeto-Relacional) para interactuar con la base de datos MySQL.
 
