@@ -1,9 +1,9 @@
 <%- include("partials/head", {title: "Upss... Ocurrió un error | Argentina Programa"}) %>
 
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-800">
 	<%- include("./partials/navbar") %>
 
 	<section class="flex flex-col gap-6 p-4 justify-center text-center grow"><%= message %></section>
 
-	<%- include("partials/footer") %>
+	<%- include("partials/footer", {className: "grow"}) %>
 </body>

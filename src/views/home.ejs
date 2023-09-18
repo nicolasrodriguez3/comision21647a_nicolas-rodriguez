@@ -1,6 +1,6 @@
-<%- include("partials/head", {title: "Argentina Programa"}) %>
+<%- include("partials/head", {title: "Foro Argentina | Argentina Programa"}) %>
 
-<body class="flex flex-col min-h-screen bg-white dark:bg-gray-800">
+<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-800">
 	<%- include("./partials/navbar") %>
 
 	<main class="container mx-auto grow p-4 dark:text-gray-50 text-slate-950">
@@ -10,14 +10,27 @@
 			<p class="mt-4">
 				<a
 					href="/post"
-					class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-					>Crear publicación</a
-				>
+					class="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+					>Crear publicación
+					<svg
+						class="w-6 h-6 text-white"
+						aria-hidden="true"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 20 20">
+						<path
+							stroke="currentColor"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+					</svg>
+				</a>
 			</p>
 		</header>
 
 		<!-- Publicaciones del foro aquí -->
-		<section class="flex flex-col gap-6 py-4">
+		<section class="flex flex-col gap-6 py-4 max-w-3xl mx-auto">
 			<% if (posts && posts.length > 0) { %> <% posts.forEach(function(post) { %> <%-
 			include("./partials/post", {post}) %> <% }) %> <% } else { %>
 			<p class="text-xl">No hay publicaciones.</p>
